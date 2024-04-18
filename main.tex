@@ -1,0 +1,130 @@
+\documentclass[
+	11pt
+] {article}
+
+\usepackage[
+	a4paper,
+	left=3cm,
+	right=3cm,
+	top=3cm,
+	bottom=3cm,
+	headheight=1cm
+] {geometry} %for setting margin
+
+\usepackage{fancyhdr} %for header and footers
+\pagestyle{fancy}
+\usepackage{parskip} %for leaving some space after paragraphs
+
+% Language and Font package
+\usepackage[T2A]{fontenc} %loads cyrillic characters
+\usepackage[russian]{babel} %changes date heading 'abstract' to Russian
+\usepackage[utf8]{inputenc} %to force utf-8 encoding
+
+% Math
+\usepackage{mathtools} %helps to number equations
+\usepackage{siunitx} % Units of measurement
+
+
+% For graphs and advanced diagrams
+\usepackage{tikz} %the drawing library
+\usetikzlibrary{positioning} %some auxilary to the drawing library
+\usetikzlibrary{math} %helps to define variables in the tikz
+
+\usepackage{authblk} %authors and their affiliations
+
+% Basic graphics
+\usepackage{graphicx} %for include graphics
+\usepackage{caption} %better referencing to labels
+\usepackage{subcaption}  %helps with multiple pictures in a figure
+\renewcommand\thesubfigure{\asbuk{subfigure}} %for renaming subfigures to russian
+
+%----------------------------------------------------------------------------------------
+\graphicspath{{figures/}}
+
+\newcommand\authFamilyFirst{Шаббир}
+\newcommand\authNameFirst{Кафи}
+\newcommand\authInitialsFirst{К.}
+
+\newcommand\authFamilySecond{f2}
+\newcommand\authNameSecond{n2}
+\newcommand\authInitialsSecond{i2}
+
+\newcommand\authFamilyThird{f3}
+\newcommand\authNameThird{n3}
+\newcommand\authInitialsThird{i3}
+
+\newcommand\titleshort{short-title}
+
+\author[1, 2]{\authFamilyFirst{} \authNameFirst{}}
+\author[1]{\authFamilySecond{} \authNameSecond{}}
+\author[1]{\authFamilyThird{} \authNameThird{}}
+
+\affil[1]{Московский физико-технический институт, Долгопрудный, 141701}
+\affil[2]{kafiulshabbir@phystech.edu}
+
+\title{Title}
+\fancyhead{}
+\fancyhead[L]{\titleshort}
+\fancyhead[C]{\authFamilyFirst{}, \authFamilySecond{}, \authFamilyThird{}}
+\fancyhead[R]{\the\year}
+
+
+
+\begin{document}
+% \nocite{*}
+
+\maketitle
+
+
+\begin{abstract}
+	Abstract goes here.
+\end{abstract}
+
+
+\section{Введение} \label{sec:intro}
+	This is \cite{ramstad2019pore}.
+
+\section{Main-Text}
+
+a
+
+a
+
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+
+a
+a
+
+a
+
+a
+
+\section{Эксперименты}
+
+
+\section{Результаты}
+
+
+\section{Выводы}
+
+
+\bibliographystyle{plain.bst}
+\bibliography{reference}
+\end{document}
