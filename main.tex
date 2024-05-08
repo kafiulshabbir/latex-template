@@ -12,13 +12,8 @@
 ] {geometry} %for setting margin
 
 \usepackage{fancyhdr} %for header and footers
-\pagestyle{fancy}
 \usepackage{parskip} %for leaving some space after paragraphs
 
-% Language and Font package
-\usepackage[T2A]{fontenc} %loads cyrillic characters
-\usepackage[russian]{babel} %changes date heading 'abstract' to Russian
-\usepackage[utf8]{inputenc} %to force utf-8 encoding
 
 % Math
 \usepackage{mathtools} %helps to number equations
@@ -33,12 +28,23 @@
 \usepackage{authblk} %authors and their affiliations
 
 % Basic graphics
+\usepackage{float} %to force the figure to be in a place among the text
 \usepackage{graphicx} %for include graphics
 \usepackage{caption} %better referencing to labels
 \usepackage{subcaption}  %helps with multiple pictures in a figure
-\renewcommand\thesubfigure{\asbuk{subfigure}} %for renaming subfigures to russian
 
-%----------------------------------------------------------------------------------------
+
+% Language and Font package: COMMENT THESE FOR ENGLISH ONLY
+\usepackage[T2A]{fontenc} %[RUS] loads cyrillic characters
+\usepackage[russian]{babel} %[RUS] changes date heading 'abstract' to Russian
+\usepackage[utf8]{inputenc} %[RUS] to force utf-8 encoding
+
+
+%-----------------------------------------------------------------------
+
+\renewcommand\thesubfigure{\asbuk{subfigure}} %[RUS] for renaming subfigures to russian
+\sisetup{output-decimal-marker = {,}} %[RUS] changes all ordinary decimal separator to rassiky commas
+\pagestyle{fancy}
 \graphicspath{{figures/}}
 
 \newcommand\authFamilyFirst{Шаббир}
@@ -62,7 +68,7 @@
 \affil[1]{Московский физико-технический институт, Долгопрудный, 141701}
 \affil[2]{kafiulshabbir@phystech.edu}
 
-\title{Title}
+\title{Simulation of filtration}
 \fancyhead{}
 \fancyhead[L]{\titleshort}
 \fancyhead[C]{\authFamilyFirst{}, \authFamilySecond{}, \authFamilyThird{}}
@@ -77,53 +83,96 @@
 
 
 \begin{abstract}
-	Abstract goes here.
+	This is the text of the default abstract.
 \end{abstract}
 
-
-\section{Введение} \label{sec:intro}
-	This is \cite{ramstad2019pore}.
-
-\section{Main-Text}
-
-a
-
-a
+\tableofcontents
 
 
-a
+\section{Template}
+	\subsection{Equations}
+		\begin{equation} \label{eq:defaut-darcy-law}
+			Q = \frac{k}{\mu} \Delta P
+		\end{equation}
 
-a
+		This is a sample reference to equation \ref{eq:defaut-darcy-law}.
 
-a
+	\subsection{Table}
+		\begin{table}[H]
+			\centering
+			\caption{Sample caption of the table}
+			\label{table:default-1}
+			\begin{tabular}{| c | c | c |} % or ccS
+				\hline
+				Surface & Area (\si{\metre\squared}) & {Coefficient of absorption}\\
+				\hline
+				ceiling & 140 & 0.8 \\
+				walls & 260 & 0.03 \\
+				floor & 140 & 0.06 \\
+				\hline
+			\end{tabular}
+		\end{table}
 
-a
+		This is a sample reference to table \ref{table:default-1}.
 
-a
+	\subsection{Referencing subsections target 1} \label{subsec:default-part-1}
+		Some default text for target sub section 1.
 
-a
+	\subsection{Referencing subsections target 2}  \label{subsec:default-part-2}
+		Some default text for target sub section 2.
 
-a
+	\subsection{Referencing sections and sub sections}
+		This is a reference to sections or subsections \ref{subsec:default-part-1} and \ref{subsec:default-part-1}.
 
-a
+	\subsection{Single Figure}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.5\textwidth]{fig-default-02}
+			\caption{A single figure}
+			\label{fig:default-single-figure}
+		\end{figure}
 
-a
+		This is a sample reference to the figure \ref{fig:default-single-figure}.
 
-a
-a
+	\subsection{Figure with subfigures}
 
-a
+		% H: forces to be in the place
+		% h: tries to put on place
+		% t: on top of page
+		% ht: here or top of next available space
+		\begin{figure}[H]
+			\centering
+			\begin{subfigure}[b]{0.49\textwidth}
+				\centering
+				\includegraphics[width=\textwidth]{fig-default-01}
+				\caption{Label of subfig-a $S = \pi r^2$.}
+				\label{subfig:default-a}
+			\end{subfigure}
+			\hfill
+			\begin{subfigure}[b]{0.49\textwidth}
+				\centering
+				\includegraphics[width=\textwidth]{fig-default-02}
+				\caption{Label of subfig-b $S = a + b + c$.}
+				\label{subfig:default-b}
+			\end{subfigure}
+			\caption{Caption of both the figures}
+			\label{fig:default-label-figure-two-shapes}
+		\end{figure}
 
-a
+		Figure \ref{fig:default-label-figure-two-shapes} contains \ref{subfig:default-a} and \ref{subfig:default-b}.
 
-\section{Эксперименты}
+	\subsection{Figure Drawing on Latex}
+		\begin{figure}[H]
+			\centering
+			\begin{tikzpicture}
+				\draw[blue, thick] (0,0) rectangle (3,2);
+				\draw[orange, thick] (4,0) -- (6,0) -- (5.7,2) -- cycle;
+			\end{tikzpicture}
+			\caption{Tikz figure}
+		\end{figure}
 
-
-\section{Результаты}
-
-
-\section{Выводы}
-
+	\subsection{Citation}
+		This is an example of citation \cite{ramstad2019pore}.
 
 \bibliographystyle{plain.bst}
 \bibliography{reference}
